@@ -8,13 +8,15 @@
 		</view>
 		<scroll-view scroll-x="true" class=" mt10 jhggxseert dx_jz">
 			<view v-for="(sd,idx) in dhxewer" @tap="sddrert(idx)" :class="idx==xseerr?'act':''" class="xwerrtxe fz30 z6 pr cen  ml30 f_b cz">
-				{{sd}}
+				{{sd.name}}
 			</view>
 		</scroll-view>
 		<view class="xrrtxeertx" :style="{height:xrrtxeertx+'px'}">
 			<swiper class="h100" @change="jhxerert" :current="xseerr">
-				<swiper-item v-for="sd in 8">
-						<quanbu></quanbu>
+				<swiper-item v-for="(sd,idx) in dhxewer">
+					
+					 <quanbu v-if="idx == 0"></quanbu> 
+					<spym :ijkxer="sd.id" v-if="idx != 0"></spym>
 				</swiper-item>
 			</swiper>
 		</view>
@@ -23,27 +25,47 @@
 </template>
 <script>
 	import quanbu from "./components/quanbu.vue"
+	import spym from "./components/spym.vue"
+	
 	export default {
 		data() {
 			return {
-				dhxewer: ['全部', '本周活动', '会员特价', '活动课程', '家居', '美食', '服饰', '健康'],
+				dhxewer: [{
+					name:"全部",
+					id:''
+				}],
 				xseerr: 0,
-				xrrtxeertx: ''
+				xrrtxeertx: '',
+				goodsCategory:""
 			}
 		},
 		components: {
-			quanbu
+			quanbu,
+			spym
 		},
 		methods: {
 			jhxerert(e) {
 				this.xseerr = e.detail.current
 			},
-			sddrert(e){
-				this.xseerr=e
-			}
+			sddrert(e) {
+				this.xseerr = e
+			},
+			// 商品分类
+			async getgoodsCategory() {
+				this.goodsCategory = await this.get("goodsCategory/page ", {})
+				this.goodsCategory = this.goodsCategory.data.content
+				this.goodsCategory.map(a=>{
+					let eert = {}
+					eert.name = a.name
+					eert.id =a.id
+					this.dhxewer.push(eert)
+				})
+			},
+
+
 		},
 		mounted() {
-
+			this.getgoodsCategory()
 		},
 		onLoad() {
 			this.xrrtxeertx = uni.getSystemInfoSync().windowHeight - 105

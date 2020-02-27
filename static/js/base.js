@@ -1,4 +1,4 @@
-var url_d = "http://www.duxinggj.com/",
+var url_d = "https://v.zulinma.com/v1/",
 	urlse = 'http://yapi.demo.qunar.com/mock/53256/'
 exports.base = {
 	install: function(Vue, options) {

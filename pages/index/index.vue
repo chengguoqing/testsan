@@ -8,88 +8,78 @@
 		</view>
 		<swiper class="jhgxeeerert" :indicator-dots="true" :autoplay="true" :circular="true" indicator-color="#F0BDC9"
 		 indicator-active-color="#FF547B">
-			<swiper-item>
-				<image src="https://duxinggj-2018-1251133427.cos.ap-guangzhou.myqcloud.com/d8a1b44d-5526-45e4-af04-dd47f9c0e495.png"></image>
+			<swiper-item v-for="sd in banners">
+				<view class="kjhhxeeett">
+					<view class="yuyyhjxert">
+						<image :src="sd.photo"></image>
+						<view class="lokjxeertt">
+							<view class="cf fz30">
+								{{sd.name}} | {{sd.position}}
+							</view>
+							<view class="fz40 cf">
+								{{sd.companyName}}
+							</view>
+						</view>
+					</view>
+				</view>
+				<!-- <image src="https://duxinggj-2018-1251133427.cos.ap-guangzhou.myqcloud.com/d8a1b44d-5526-45e4-af04-dd47f9c0e495.png"></image> -->
 			</swiper-item>
-			<swiper-item>
-				<image src="https://duxinggj-2018-1251133427.cos.ap-guangzhou.myqcloud.com/c4882181-7383-4f58-aa10-10eb677b4cb3.png"></image>
-			</swiper-item>
+			
 		</swiper>
 		<view class="pd mt20">
 			<view class="dtitle">
 				联盟空间
 			</view>
 			<scroll-view class="jinhxeeert" :scroll-x="true">
-				<view class="jjbxwer" v-for="sd in 20">
-					深圳总部
+				<view class="jjbxwer dian " v-for="sd in company">
+					<image :src="sd.logo" class="kkjjeer yj cz "></image>
+					<view class="mt20 fz20 z3">
+						{{sd.address}}
+					</view>
+					<view class=" fz28 z3">
+							{{sd.name}}
+					</view>
+					<view class="mt20 fz20 z3">
+						{{sd.linkName}}
+					</view>
+					<!-- <view class="pr cf">
+						{{sd.name}}
+					</view>
+					<image :src="sd.logo"></image> -->
 				</view>
 			</scroll-view>
 
 		</view>
 
 		<view class="mt40">
-			<view class="mt20 row cen">
-				<view class="col">
-					<image src="https://duxinggj-2018-1251133427.cos.ap-guangzhou.myqcloud.com/afbf8bbb-b84a-489f-acb5-360e41bff34c.png"
-					 class="xseeerte"></image>
+			<view class="mt20  cen">
+				<view class="fdgdfttdd" v-for="sd in catalogue">
+					<image :src="sd.resourceIcon" class="xseeerte"></image>
 					<view class="fz24 z3">
-						最新活动
+						{{sd.name}}
 					</view>
 				</view>
-				<view class="col">
-					<image src="https://duxinggj-2018-1251133427.cos.ap-guangzhou.myqcloud.com/afbf8bbb-b84a-489f-acb5-360e41bff34c.png"
-					 class="xseeerte"></image>
-					<view class="fz24 z3">
-						冬夏令营
-					</view>
-				</view>
-				<view class="col">
-					<image src="https://duxinggj-2018-1251133427.cos.ap-guangzhou.myqcloud.com/afbf8bbb-b84a-489f-acb5-360e41bff34c.png"
-					 class="xseeerte"></image>
-					<view class="fz24 z3">
-						海上运动
-					</view>
-				</view>
-				<view class="col">
-					<image src="https://duxinggj-2018-1251133427.cos.ap-guangzhou.myqcloud.com/afbf8bbb-b84a-489f-acb5-360e41bff34c.png"
-					 class="xseeerte"></image>
-					<view class="fz24 z3">
-						有氧营地
-					</view>
+				<view class="qc">
+					
 				</view>
 			</view>
 
-			<view class="mt20 row cen">
-				<view class="col">
-					<image src="https://duxinggj-2018-1251133427.cos.ap-guangzhou.myqcloud.com/afbf8bbb-b84a-489f-acb5-360e41bff34c.png"
-					 class="xseeerte"></image>
-					<view class="fz24 z3">
-						轰趴BBQ
-					</view>
-				</view>
-				<view class="col">
-					<image src="https://duxinggj-2018-1251133427.cos.ap-guangzhou.myqcloud.com/afbf8bbb-b84a-489f-acb5-360e41bff34c.png"
-					 class="xseeerte"></image>
-					<view class="fz24 z3">
-						婚纱婚礼殿堂
-					</view>
-				</view>
-				<view class="col">
-					<image src="https://duxinggj-2018-1251133427.cos.ap-guangzhou.myqcloud.com/afbf8bbb-b84a-489f-acb5-360e41bff34c.png"
-					 class="xseeerte"></image>
-					<view class="fz24 z3">
-						笔记
-					</view>
-				</view>
-				<view class="col">
-					<image src="https://duxinggj-2018-1251133427.cos.ap-guangzhou.myqcloud.com/afbf8bbb-b84a-489f-acb5-360e41bff34c.png"
-					 class="xseeerte"></image>
-					<view class="fz24 z3">
-						加入航海方程式
-					</view>
-				</view>
-			</view>
+			
 		</view>
+		
+		<swiper class="jhgxeeerert ab" :indicator-dots="true" :autoplay="true" :circular="true" indicator-color="#F0BDC9"
+		 indicator-active-color="#FF547B">
+			<swiper-item v-for="sd in advertInfo">
+				<view class="kjhhxeeett">
+					<view class="dsfsdrceder">
+						<image :src="sd.imageUrl"></image>
+					</view>
+				</view>
+			</swiper-item>
+		</swiper>
+		
+		
+		
 
 		<view class="mt40 pd">
 			<view class="csdfrtxcwer">
@@ -103,10 +93,11 @@
 		</view>
 
 		<view class="mt20">
-			<image v-for="sd in jhgdse" src="https://duxinggj-2018-1251133427.cos.ap-guangzhou.myqcloud.com/4446e8a7-11d9-4b8b-ae4f-73421423ffe8.png"
-			 class="w100" mode="widthFix"></image>
+			<view class="dsfsdtrdert" v-for="sd in linepage">
+				<image  :src="sd.cover" class="w100" mode="widthFix" ></image>
+			</view>
 		</view>
-		<uni-load-more :status="status" />
+	<!-- 	<uni-load-more :status="status" /> -->
 	</view>
 </template>
 <script>
@@ -116,6 +107,11 @@
 			return {
 				dsfdsr: 0,
 				jhgdse: 10,
+				banners:'',
+				company:'',
+				catalogue:'',
+				linepage:'',
+				advertInfo:'',
 				status: 'more' // loading
 			}
 		},
@@ -123,7 +119,35 @@
 			uniLoadMore
 		},
 		methods: {
-
+			async getbanner(){ // 获取顶部推荐⽤户列表
+				this.banners = await this.get("user/page",{})
+				this.banners  = this.banners.data.content
+			},
+			async getcompany(){ // 联盟空间
+				this.company = await this.get("company/page",{})
+				this.company  = this.company.data.content
+			},
+			async getcatalogue(){ // 分类 icon和名称
+				this.catalogue = await this.get("catalogue/page",{})
+				this.catalogue  = this.catalogue.data.content
+				
+				uni.stopPullDownRefresh();
+			},
+			async getlinepage(){ // 当前⽅程式列表内容
+				this.linepage = await this.get("line/page",{})
+				this.linepage  = this.linepage.data.content
+			},
+			async getadvertInfo(){ //
+				this.advertInfo = await this.get("advertInfo/list",{code:'LINE'})
+				this.advertInfo  = this.advertInfo.data
+			},
+			jjhhse () {
+					this.getbanner()
+					this.getcompany()
+					this.getcatalogue()
+					this.getlinepage()
+					this.getadvertInfo()
+			}
 		},
 		onShareAppMessage: function(res) {
 			// 来自页面内分享按钮
@@ -140,12 +164,10 @@
 			}, 2000)
 		},
 		onPullDownRefresh() {
-			setTimeout(function() {
-				uni.stopPullDownRefresh();
-			}, 1000);
+			this.jjhhse()
 		},
 		mounted() {
-
+			this.jjhhse()
 		},
 	}
 </script>
@@ -160,16 +182,24 @@
 	}
 
 	.jjbxwer {
-		width: 160upx;
-		height: 160upx;
+		width: 200upx;
+		height: 260upx;
 		background: #EDEDED;
 		border-radius: 10upx;
-		line-height: 160upx;
-		font-size: 30upx;
-		text-align: center;
+		font-size: 26upx;
 		display: inline-block;
 		margin-right: 30upx;
+		overflow: hidden;
+		position: relative;
+		padding: 20upx 30upx;
 	}
+	/* .jjbxwer image{
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		left: 0;
+		top: 0;
+	} */
 
 
 
@@ -205,5 +235,48 @@
 		top: 10upx;
 		width: 2upx;
 		background: #333;
+	}
+	.kjhhxeeett{
+		padding: 20upx 40upx;
+	}
+	.yuyyhjxert{
+		border-radius: 40upx;
+		height: 620upx;
+		overflow: hidden;
+		position: relative;
+	}
+	.lokjxeertt{
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		padding: 40upx 30upx;
+	}
+	.fdgdfttdd{
+		width: 25%;
+		float: left;
+	}
+	.dsfsdtrdert{
+		padding: 10upx 40upx;
+	}
+	.dsfsdtrdert image{
+		border-radius: 20upx;
+	}
+	.kkjjeer{
+		width: 80upx;
+		height: 80upx;
+	}
+	.dsfsdrceder{
+		height: 200upx;
+		
+		overflow: hidden;
+		border-radius: 20upx;
+	}
+	.jhgxeeerert.ab {
+		height: 220upx;
+	}
+	.dsfsdrceder image{
+		width: 100%;
+		height: 100%;
 	}
 </style>

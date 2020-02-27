@@ -3,23 +3,28 @@
 		 
 			<swiper class="jhgxeeerert" :indicator-dots="true" :autoplay="true" :circular="true" indicator-color="#F0BDC9"
 			 indicator-active-color="#FF547B">
-				<swiper-item v-for="sd in 5">
-					<image src="https://duxinggj-2018-1251133427.cos.ap-guangzhou.myqcloud.com/6c23e47b-585c-4d88-adbe-8bc4528527d0.png"></image>
+				<swiper-item v-for="sd in advertInfo">
+					<view class="kjhhxeeett">
+						<view class="yuyyhjxertaser">
+							
+							<image :src="sd.imageUrl" ></image>
+						</view>
+					</view>
 				</swiper-item>
 			</swiper>
 			<view class="fz36 pd mt20">
 				热门推荐
 			</view>
 			<scroll-view class="jinhxeeert dfrxeeert " :scroll-x="true">
-				<view class="ccvrrtxeer pm20" v-for="sd in 20">
-					<image src="https://duxinggj-2018-1251133427.cos.ap-guangzhou.myqcloud.com/ca225934-71dd-4bef-afc4-36d409b80ba9.jpg"
+				<view class="ccvrrtxeer pm20" v-for="sd in goodspage">
+					<image :src="sd.imageUrl"
 					 class="jhhnxeert"></image>
 					<view class="dsfdsrrxewrer">
 						<view class="xdrrrtxw dianer fz26 z3">
-							六年老白茶 | 陈皮白茶，七年新会天马大红皮 - 沐心
+							{{sd.name}}
 						</view>
 						<view class="dddrrt red fz28 mt10 ">
-							<text class="fz24">￥</text>78
+							<text class="fz24">￥</text>{{sd.price/1000}}
 						</view>
 					</view>
 				</view>
@@ -29,21 +34,16 @@
 				会员专区
 			</view>
 			<view class="btm mt20">
-				<view class="mt10" v-for="sd in 10">
-					<image src="https://duxinggj-2018-1251133427.cos.ap-guangzhou.myqcloud.com/27fdef9f-947f-45ce-8d76-2870247366e1.png"
-					 class="w100" mode="widthFix"></image>
-					<view class="row">
-						<view class="col">
-							<image src="https://duxinggj-2018-1251133427.cos.ap-guangzhou.myqcloud.com/793e1907-d788-4a42-aa19-f383e83bbef7.png"
-							 mode="widthFix" class="w100"></image>
-						</view>
-						<view class="col">
-							<image src="https://duxinggj-2018-1251133427.cos.ap-guangzhou.myqcloud.com/54413eb6-15e5-4150-abd0-e27d9109b885.png"
-							 mode="widthFix" class="w100"></image>
-						</view>
-						<view class="col">
-							<image src="https://duxinggj-2018-1251133427.cos.ap-guangzhou.myqcloud.com/0540308c-61a5-422e-be19-5bd505312bff.png"
-							 mode="widthFix" class="w100"></image>
+				<view class="mt10 fdgfdtxeertt">
+					<view class="yuyyhjxert">
+						<image :src="userinfo.photo" mode="widthFix"></image>
+						<view class="lokjxeertt">
+							<view class="cf fz30">
+								{{userinfo.name}} | {{userinfo.position}}
+							</view>
+							<view class="fz40 cf">
+								{{userinfo.companyName}}
+							</view>
 						</view>
 					</view>
 				</view>
@@ -59,7 +59,10 @@
 				downOption: {
 					auto: false //是否在初始化后,自动执行downCallback; 默认true
 				},
-				dataList: []
+				advertInfo:'',
+				dataList: [],
+				userinfo:"",
+				goodspage:""
 			}
 		},
 		components: {
@@ -77,13 +80,32 @@
 				setTimeout(a=>{
 					this.mescroll.endSuccess();
 				},2000)
+			},
+			// 上部滚动图⽚及链接
+			async getadvertInfo(){
+					this.advertInfo = await this.get("advertInfo/list",{code:"LINE"})
+					this.advertInfo  = this.advertInfo.data
+			},
+			// 分类及商品列表 1是热⻔
+			async getgoodspage(){
+					this.goodspage = await this.get("goods/page",{type:1})
+					this.goodspage  = this.goodspage.data.content
+			},
+			// 商城中的会员专区获取某个⽤户信息
+			async getuserinfo(){
+					this.userinfo = await this.get("user/170")
+					this.userinfo  = this.userinfo.data
 			}
+			
+			
 		},
 		onLoad() {
 			
 		},
 		mounted() {
-
+			this.getadvertInfo()
+			this.getgoodspage()
+			this.getuserinfo()
 		}
 	}
 </script>
@@ -136,5 +158,46 @@
 	
 	.dfvgdftyxe5r {
 		height: 100%;
+	}
+	.kjhhxeeett{
+		padding: 20upx 40upx;
+	}
+	.yuyyhjxertaser{
+		border-radius: 40upx;
+		height: 380upx;
+		overflow: hidden;
+		position: relative;
+	}
+	.fdgfdtxeertt{
+		height: 340upx;
+		padding: 10upx 40upx;
+	}
+	.yuyyhjxert image{
+		width: 100%;
+		height: 100%;
+	}
+	
+	.yuyyhjxert{
+		border-radius: 40upx;
+		height: 340upx;
+		overflow: hidden;
+		position: relative;
+	}
+	.lokjxeertt{
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		padding: 40upx 30upx;
+	}
+	.fdgdfttdd{
+		width: 25%;
+		float: left;
+	}
+	.dsfsdtrdert{
+		padding: 10upx 40upx;
+	}
+	.dsfsdtrdert image{
+		border-radius:8upx;
 	}
 </style>
